@@ -2,9 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>篮球大师训练营晨训方案</title>
     <style>
+        /* 基础重置与响应式单位 */
         * {
             margin: 0;
             padding: 0;
@@ -16,40 +17,60 @@
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
+            font-size: 1rem;
         }
         
+        /* 头部渐变与响应式内边距 */
         header {
             background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             color: white;
-            padding: 2rem 0;
+            padding: clamp(1rem, 3vw, 2rem) 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
+        header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+        
+        header p {
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            margin-top: 0.5rem;
+        }
+        
+        /* 响应式容器 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: clamp(1rem, 3vw, 2rem);
+            width: 95vw;
         }
         
+        /* 自适应按钮网格 */
         .btn-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
         
+        /* 触摸友好的按钮 */
         .day-btn {
             background: white;
             border: none;
             border-radius: 10px;
-            padding: 1.5rem 1rem;
-            font-size: 1.2rem;
+            padding: 1.2rem 0.5rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             font-weight: bold;
             color: #2c3e50;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
         
         .day-btn:hover {
@@ -63,10 +84,11 @@
         .day-btn.day4 { background-color: #9c27b0; }
         .day-btn.day5 { background-color: #f44336; }
         
+        /* 训练内容区 */
         .training-content {
             background: white;
             border-radius: 15px;
-            padding: 2rem;
+            padding: clamp(1rem, 3vw, 1.5rem);
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             display: none;
         }
@@ -83,43 +105,52 @@
         
         .training-header {
             color: #1a237e;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             padding-bottom: 0.5rem;
             border-bottom: 3px solid #ff9800;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
         }
         
+        /* 目标框 */
         .goal-box {
             background: #e3f2fd;
-            padding: 1.2rem;
+            padding: 1rem;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         .goal-box h3 {
             color: #0d47a1;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
         
         .training-section {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .training-section h3 {
             color: #5d4037;
             margin-bottom: 0.8rem;
+            font-size: 1.1rem;
         }
         
+        /* 响应式表格 */
         .exercise-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
+            display: block;
+            overflow-x: auto;
         }
         
         .exercise-table th, 
         .exercise-table td {
-            padding: 0.8rem;
+            padding: 0.6rem;
             text-align: left;
             border-bottom: 1px solid #eee;
+            min-width: 100px;
+            font-size: clamp(0.85rem, 2vw, 1rem);
         }
         
         .exercise-table th {
@@ -131,26 +162,35 @@
             background-color: #f9f9f9;
         }
         
+        /* 篮球技能区 */
         .basketball-section {
             background: #fff8e1;
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 8px;
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
         }
         
         .basketball-section h3 {
             color: #e65100;
+            font-size: 1.1rem;
         }
         
+        .basketball-section p {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+        
+        /* 页脚 */
         footer {
             background: #2c3e50;
             color: white;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
             border-radius: 0 0 10px 10px;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
         }
         
+        /* 响应式断点 */
         @media (max-width: 768px) {
             .btn-container {
                 grid-template-columns: 1fr;
@@ -158,6 +198,37 @@
             
             .container {
                 padding: 1rem;
+            }
+            
+            .day-btn {
+                padding: 1rem 0.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* 小屏幕优化 */
+        @media (max-width: 480px) {
+            .exercise-table th, 
+            .exercise-table td {
+                padding: 0.5rem;
+                min-width: 80px;
+            }
+            
+            .goal-box, .basketball-section {
+                padding: 0.8rem;
+            }
+        }
+        
+        /* 横屏设备优化 */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .btn-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            
+            .day-btn {
+                min-height: 60px;
+                padding: 0.5rem;
+                font-size: 0.9rem;
             }
         }
     </style>
