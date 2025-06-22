@@ -48,7 +48,7 @@
         .header {
             background: var(--gradient);
             color: white;
-            padding: 35px 20px 25px 100px;
+            padding: 25px 20px;
             text-align: center;
             border-radius: 0 0 25px 25px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -65,19 +65,6 @@
             height: 100%;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><path d="M0,0 C20,20 30,30 50,30 C70,30 80,20 100,0 L100,40 L0,40 Z" fill="white" opacity="0.1"/></svg>');
             background-size: 100% 100%;
-        }
-        
-        .header-logo {
-            position: absolute;
-            left: 20px;
-            top: 25px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            z-index: 2;
         }
         
         .logo {
@@ -308,6 +295,22 @@
             margin-bottom: 5px;
         }
         
+        .footer .social {
+            margin-top: 15px;
+        }
+        
+        .social i {
+            font-size: 20px;
+            color: var(--primary);
+            margin: 0 8px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .social i:hover {
+            opacity: 1;
+        }
+        
         @media (min-width: 768px) {
             body {
                 padding: 20px;
@@ -316,51 +319,17 @@
             .header {
                 max-width: 700px;
                 margin: 0 auto;
-                padding: 35px 20px 25px 100px;
             }
             
             .content {
                 max-width: 700px;
                 margin: 0 auto;
             }
-            
-            .header-logo {
-                left: calc((100% - 700px) / 2 + 20px);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header {
-                padding: 25px 15px 20px 70px;
-            }
-            
-            .header-logo {
-                width: 50px;
-                height: 50px;
-                left: 10px;
-                top: 20px;
-            }
-            
-            .title {
-                font-size: 20px;
-            }
-            
-            .subtitle {
-                font-size: 14px;
-            }
-            
-            .logo i {
-                font-size: 28px;
-                margin: 0 5px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <!-- Logo 添加在左上角 -->
-        <img src="logo.jpg" alt="ABC篮球训练营Logo" class="header-logo">
-        
         <div class="logo">
             <i class="fas fa-basketball-ball"></i>
             <h1 class="title">2025年ABC双语·篮球大师训练营</h1>
@@ -556,6 +525,12 @@
             <div class="brand">ABC双语·篮球大师训练营</div>
             <p>让运动成为成长的力量 | 打造国际化运动体验</p>
             <p>专业教练团队 | 科学训练体系 | 安全第一理念</p>
+            <div class="social">
+                <i class="fab fa-weixin"></i>
+                <i class="fab fa-weibo"></i>
+                <i class="fas fa-phone-alt"></i>
+                <i class="fas fa-envelope"></i>
+            </div>
         </div>
     </div>
     
